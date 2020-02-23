@@ -9,11 +9,17 @@
 		<from-view-id>*</from-view-id>
 		
 		<!-- xxx -->
-		<!--navigation-case>
-			<from-outcome>xxxView</from-outcome>
-			<to-view-id></to-view-id>
+		<navigation-case>
+			<from-outcome>actionPlanListView</from-outcome>
+			<to-view-id>/private/actionplan/list.jsf</to-view-id>
 			<redirect />
-		</navigation-case-->
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>actionPlanEditView</from-outcome>
+			<to-view-id>/private/actionplan/edit.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 		
 	</navigation-rule>
 
