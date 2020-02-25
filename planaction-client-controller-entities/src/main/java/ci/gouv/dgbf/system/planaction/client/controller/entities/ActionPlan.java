@@ -7,8 +7,9 @@ import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStri
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @Accessors(chain=true) @NoArgsConstructor
 public class ActionPlan extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringNamableImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
