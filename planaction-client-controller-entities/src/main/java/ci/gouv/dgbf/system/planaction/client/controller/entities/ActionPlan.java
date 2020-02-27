@@ -14,10 +14,10 @@ public class ActionPlan extends AbstractDataIdentifiableSystemStringIdentifiable
 	private static final long serialVersionUID = 1L;
 	
 	private AdministrativeUnit administrativeUnit;
-	private Integer year;
-	private Integer version;
+	private Short year;
+	private Byte orderNumber;
 
 	public static final String FIELD_ADMINISTRATIVE_UNIT = "administrativeUnit";
 	public static final String FIELD_YEAR = "year";
-	public static final String FIELD_VERSION = "version"; 
+	public static final String FIELD_ORDER_NUMBER = "orderNumber"; 
 }
