@@ -22,7 +22,7 @@ public abstract class AbstractPageContainerManagedImpl extends org.cyk.utility.c
 	@Override
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
-		if(StringHelper.isNotBlank(Faces.getRequestParameter(ParameterName.ENTITY_IDENTIFIER.getValue())))
+		if(StringHelper.isNotBlank(Faces.getRequestParameter("administrativeunit")))
 			administrativeUnit = __inject__(AdministrativeUnitController.class).readBySystemIdentifier(Faces.getRequestParameter(ParameterName.ENTITY_IDENTIFIER.getValue()));
 		year = NumberHelper.getInteger(Faces.getRequestParameter("year"));
 	}

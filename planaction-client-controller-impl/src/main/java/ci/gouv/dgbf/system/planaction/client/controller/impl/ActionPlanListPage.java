@@ -68,6 +68,22 @@ public class ActionPlanListPage extends AbstractPageContainerManagedImpl impleme
 			@Override public void listenAction(Object argument) {__inject__(ActionPlanController.class).delete((ActionPlan) argument);}
 		},MenuItem.ConfiguratorImpl.FIELD_CONFIRMABLE,Boolean.TRUE
 						,MenuItem.ConfiguratorImpl.FIELD_RUNNER_ARGUMENTS_SUCCESS_MESSAGE_ARGUMENTS_RENDER_TYPES,CollectionHelper.listOf(RenderType.GROWL));
+		
+		dataTable.addRecordMenuItemByArguments(MenuItem.FIELD_VALUE,"Programmation Financière",MenuItem.FIELD_ICON,"fa fa-eye",MenuItem.FIELD_LISTENER,new AbstractAction.Listener() {			
+			@Override public void listenAction(Object argument) {
+				UniformResourceIdentifierAsFunctionParameter p = new UniformResourceIdentifierAsFunctionParameter();
+				p.setRequest(__getRequest__());
+				p.setPath(new PathAsFunctionParameter());
+				p.getPath().setIdentifier("actionPlanFinancialProgrammingView");
+				p.setQuery(new QueryAsFunctionParameter());
+				p.getQuery().setValue("entityidentifier="+((ActionPlan)argument).getIdentifier());
+				try {
+					FacesContext.getCurrentInstance().getExternalContext().redirect(UniformResourceIdentifierHelper.build(p));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		},MenuItem.ConfiguratorImpl.FIELD_RUNNER_ARGUMENTS_SUCCESS_MESSAGE_ARGUMENTS_NULLABLE,Boolean.TRUE);
 	}
 	
 	@Override

@@ -21,6 +21,12 @@
 			<redirect />
 		</navigation-case>
 		
+		<navigation-case>
+			<from-outcome>actionPlanFinancialProgrammingView</from-outcome>
+			<to-view-id>/private/actionplan/financialprogramming.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
 	</navigation-rule>
 
 </faces-config>
