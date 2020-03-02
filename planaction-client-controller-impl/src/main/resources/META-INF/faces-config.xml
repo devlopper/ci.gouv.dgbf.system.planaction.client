@@ -22,8 +22,8 @@
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>actionPlanFinancialProgrammingView</from-outcome>
-			<to-view-id>/private/actionplan/financialprogramming.jsf</to-view-id>
+			<from-outcome>actionPlanReadView</from-outcome>
+			<to-view-id>/private/actionplan/read.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		

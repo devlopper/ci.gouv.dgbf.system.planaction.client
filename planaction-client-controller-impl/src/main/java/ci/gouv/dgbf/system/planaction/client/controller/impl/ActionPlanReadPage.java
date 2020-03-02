@@ -23,7 +23,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named @ViewScoped @Getter @Setter
-public class ActionPlanFinancialProgrammingPage extends AbstractPageContainerManagedImpl implements Serializable {
+public class ActionPlanReadPage extends AbstractPageContainerManagedImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private ActionPlan actionPlan;
@@ -37,17 +37,15 @@ public class ActionPlanFinancialProgrammingPage extends AbstractPageContainerMan
 		
 		activitiesDataTable = DataTable.build(DataTable.FIELD_LAZY,Boolean.TRUE,DataTable.ConfiguratorImpl.FIELD_ENTIY_CLASS,Activity.class
 				,DataTable.ConfiguratorImpl.FIELD_FILTERABLE,Boolean.TRUE,DataTable.FIELD_SELECTION_MODE,"multiple"
-				,DataTable.ConfiguratorImpl.FIELD_LAZY_DATA_MODEL,new LazyDataModel(actionPlan));
-		
-		System.out.println("ActionPlanFinancialProgrammingPage.__listenPostConstruct__() : "+activitiesDataTable.getValue());
+				,DataTable.ConfiguratorImpl.FIELD_LAZY_DATA_MODEL,new LazyDataModel(actionPlan)
+				);
 		
 		activitiesDataTable.addColumnsAfterRowIndex(Column.build(Column.FIELD_FIELD_NAME,"codeAndName",Column.FIELD_FILTER_BY,"activity"
 				,Column.ConfiguratorImpl.FIELD_FILTERABLE,Boolean.TRUE));
 		
-		layout = Layout.build(Layout.FIELD_IDENTIFIER,"layout",Layout.FIELD_CELL_WIDTH_UNIT,Cell.WidthUnit.UI_G
+		layout = Layout.build(Layout.FIELD_IDENTIFIER,"layout_"+actionPlan.getCode(),Layout.FIELD_CELL_WIDTH_UNIT,Cell.WidthUnit.UI_G
 				,Layout.ConfiguratorImpl.FIELD_CELLS_MAPS,CollectionHelper.listOf(
-					MapHelper.instantiate(Cell.FIELD_CONTROL,activitiesDataTable,Cell.FIELD_WIDTH,12)
-					
+					MapHelper.instantiate(Cell.FIELD_CONTROL,activitiesDataTable,Cell.FIELD_WIDTH,12)					
 					));
 	}
 	
@@ -66,19 +64,13 @@ public class ActionPlanFinancialProgrammingPage extends AbstractPageContainerMan
 		public LazyDataModel(ActionPlan actionPlan) {
 			super(Activity.class);
 			this.actionPlan = actionPlan;
-			System.out.println("ActionPlanFinancialProgrammingPage.LazyDataModel.LazyDataModel() CONS : "+this);
-			System.out.println("ActionPlanFinancialProgrammingPage.LazyDataModel.LazyDataModel() CONS : "+actionPlan.getAdministrativeUnit().getCode());
 		}
 		
 		@Override
 		protected FilterDto __instantiateFilter__(int first, int pageSize, String sortField, SortOrder sortOrder,Map<String, Object> filters) {
 			FilterDto filter = super.__instantiateFilter__(first, pageSize, sortField, sortOrder, filters);
-			if(actionPlan != null && actionPlan.getAdministrativeUnit()!=null)
-				filter.addField(Activity.FIELD_ADMINISTRATIVE_UNIT, actionPlan.getAdministrativeUnit().getCode());
-			System.out.println("ActionPlanFinancialProgrammingPage.LazyDataModel.__instantiateFilter__() : "+this);
-			System.out.println("ActionPlanFinancialProgrammingPage.LazyDataModel.__instantiateFilter__() : "+actionPlan.getAdministrativeUnit().getCode());
+			filter.addField(Activity.FIELD_ADMINISTRATIVE_UNIT, actionPlan.getAdministrativeUnit().getCode());
 			return filter;
-		}
-		
+		}		
 	}
 }
