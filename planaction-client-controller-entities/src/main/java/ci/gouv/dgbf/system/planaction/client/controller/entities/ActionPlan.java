@@ -16,7 +16,13 @@ public class ActionPlan extends AbstractDataIdentifiableSystemStringIdentifiable
 	private AdministrativeUnit administrativeUnit;
 	private Short year;
 	private Byte orderNumber;
+	private Amounts amounts;
 
+	@Override
+	public String toString() {
+		return getCode()+" "+getName();
+	}
+	
 	public static final String FIELD_ADMINISTRATIVE_UNIT = "administrativeUnit";
 	public static final String FIELD_YEAR = "year";
 	public static final String FIELD_ORDER_NUMBER = "orderNumber"; 

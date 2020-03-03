@@ -13,7 +13,6 @@ import org.cyk.utility.__kernel__.identifier.resource.PathAsFunctionParameter;
 import org.cyk.utility.__kernel__.identifier.resource.QueryAsFunctionParameter;
 import org.cyk.utility.__kernel__.identifier.resource.UniformResourceIdentifierAsFunctionParameter;
 import org.cyk.utility.__kernel__.identifier.resource.UniformResourceIdentifierHelper;
-import org.cyk.utility.__kernel__.object.Builder;
 import org.cyk.utility.__kernel__.user.interface_.message.RenderType;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.AbstractAction;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.Column;
@@ -35,7 +34,7 @@ public class ActionPlanListPage extends AbstractPageContainerManagedImpl impleme
 	@Override
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
-		dataTable = Builder.build(DataTable.class,Map.of(DataTable.ConfiguratorImpl.FIELD_ENTIY_CLASS,ActionPlan.class,DataTable.FIELD_LAZY,Boolean.TRUE));
+		dataTable = DataTable.build(DataTable.ConfiguratorImpl.FIELD_ENTIY_CLASS,ActionPlan.class,DataTable.FIELD_LAZY,Boolean.TRUE);
 		
 		dataTable.addHeaderToolbarLeftCommands(Button.build(Map.of(Button.FIELD_VALUE,"Créer",Button.FIELD_OUTCOME,"actionPlanEditView",Button.FIELD_PARAMETERS
 				,Map.of("actionidentifier",Action.CREATE.name()))));

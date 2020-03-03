@@ -10,21 +10,12 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @NoArgsConstructor @Accessors(chain=true)
-public class Activity extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringNamableImpl implements Serializable {
+public class CostUnit extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringNamableImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	private AdministrativeUnit administrativeUnit;
-	
-	public String getCodeAndName() {
-		return getCode()+" "+getName();
-	}
 	
 	@Override
 	public String toString() {
 		return getCode()+" "+getName();
 	}
 	
-	/**/
-	
-	public static final String FIELD_ADMINISTRATIVE_UNIT = "administrativeUnit";
 }

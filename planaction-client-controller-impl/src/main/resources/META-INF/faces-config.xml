@@ -8,7 +8,8 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		
-		<!-- xxx -->
+		<!-- action plan -->
+		
 		<navigation-case>
 			<from-outcome>actionPlanListView</from-outcome>
 			<to-view-id>/private/actionplan/list.jsf</to-view-id>
@@ -26,6 +27,64 @@
 			<to-view-id>/private/actionplan/read.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
+		
+		<!-- action plan and activity -->
+		
+		<navigation-case>
+			<from-outcome>actionPlanActivityCreateView</from-outcome>
+			<to-view-id>/private/actionplan/activity/create.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>actionPlanActivityEditView</from-outcome>
+			<to-view-id>/private/actionplan/activity/edit.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<!-- imputation -->
+		
+		<navigation-case>
+			<from-outcome>imputationListView</from-outcome>
+			<to-view-id>/private/imputation/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>imputationCreateView</from-outcome>
+			<to-view-id>/private/imputation/create.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>imputationEditView</from-outcome>
+			<to-view-id>/private/imputation/edit.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>imputationReadView</from-outcome>
+			<to-view-id>/private/imputation/read.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		
+		
+		<!-- 
+		
+		<navigation-case>
+			<from-outcome>actionPlanFinancialProgramView</from-outcome>
+			<to-view-id>/private/actionplan/financialprogram.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>actionPlanEntryAuthorizationPlanView</from-outcome>
+			<to-view-id>/private/actionplan/entryauthorizationplan.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		 -->
 		
 	</navigation-rule>
 
