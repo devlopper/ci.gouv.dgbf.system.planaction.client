@@ -3,6 +3,8 @@ package ci.gouv.dgbf.system.planaction.client.controller.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import org.cyk.utility.__kernel__.collection.CollectionHelper;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +17,11 @@ public class Imputation extends AbstractAmounts implements Serializable {
 	private ActionPlan actionPlan;
 	private Activity activity;
 	private CostUnit costUnit;
-	private List<ImputationFunding> fundings;
+	private List<Funding> fundings;
+	
+	public Funding getFundingAt(Integer index) {
+		return CollectionHelper.getElementAt(fundings, index);
+	}
 	
 	private ActionPlanActivity actionPlanActivity;
 	

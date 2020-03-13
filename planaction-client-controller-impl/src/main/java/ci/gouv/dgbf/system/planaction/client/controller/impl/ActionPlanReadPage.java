@@ -80,7 +80,7 @@ public class ActionPlanReadPage extends AbstractPageContainerManagedImpl impleme
 				,Column.build(Column.FIELD_FIELD_NAME,entryAuthorizationsFieldsNames[3],Column.FIELD_HEADER_TEXT,"AE",Column.FIELD_WIDTH,"100",Column.FIELD_FOOTER_TEXT,"TOTAL")
 				,Column.build(Column.FIELD_FIELD_NAME,paymentCreditsFieldsNames[3],Column.FIELD_HEADER_TEXT,"CP",Column.FIELD_WIDTH,"100",Column.FIELD_FOOTER_TEXT,"TOTAL")
 				);		
-		activitiesDataTable.addRecordMenuItemByArgumentsNavigateToView(null, "actionPlanActivityFinanceView",MenuItem.FIELD_VALUE,"Financer",MenuItem.FIELD_ICON,"fa fa-money");
+		activitiesDataTable.addRecordMenuItemByArgumentsNavigateToView(null, "actionPlanActivityPlanView",MenuItem.FIELD_VALUE,"Planifier A.E. et C.P.",MenuItem.FIELD_ICON,"fa fa-calendar");
 		activitiesDataTable.addRecordMenuItemByArgumentsExecuteFunctionDelete();
 	}
 	
