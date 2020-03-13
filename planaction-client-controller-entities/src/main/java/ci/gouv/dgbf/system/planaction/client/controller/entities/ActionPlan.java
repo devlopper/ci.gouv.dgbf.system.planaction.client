@@ -2,7 +2,8 @@ package ci.gouv.dgbf.system.planaction.client.controller.entities;
 
 import java.io.Serializable;
 
-import org.cyk.utility.client.controller.data.AbstractDataIdentifiableSystemStringIdentifiableBusinessStringNamableImpl;
+import org.cyk.utility.__kernel__.object.__static__.controller.AbstractDataIdentifiableSystemStringIdentifiableBusinessStringNamableImpl;
+import org.cyk.utility.__kernel__.object.__static__.controller.annotation.Input;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,9 @@ import lombok.experimental.Accessors;
 public class ActionPlan extends AbstractDataIdentifiableSystemStringIdentifiableBusinessStringNamableImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private AdministrativeUnit administrativeUnit;
-	private Short year;
+	@Input private Producer producer;
+	@Input private Short year;
+	private Byte numberOfYears;
 	private Byte orderNumber;
 	private Amounts amounts;
 
@@ -23,7 +25,7 @@ public class ActionPlan extends AbstractDataIdentifiableSystemStringIdentifiable
 		return getCode()+" "+getName();
 	}
 	
-	public static final String FIELD_ADMINISTRATIVE_UNIT = "administrativeUnit";
+	public static final String FIELD_PRODUCER = "producer";
 	public static final String FIELD_YEAR = "year";
 	public static final String FIELD_ORDER_NUMBER = "orderNumber"; 
 }

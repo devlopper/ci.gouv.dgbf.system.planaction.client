@@ -8,11 +8,9 @@ import javax.inject.Named;
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.map.MapHelper;
 import org.cyk.utility.__kernel__.persistence.query.filter.FilterDto;
-import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.AbstractCollection;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.Column;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.DataTable;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.LazyDataModel;
-import org.cyk.utility.client.controller.web.jsf.primefaces.model.command.CommandButton;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.layout.Cell;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.layout.Layout;
 import org.omnifaces.util.Faces;
@@ -37,7 +35,7 @@ public class ActionPlanFinancialProgramPage extends AbstractPageContainerManaged
 		super.__listenPostConstruct__();
 		actionPlan = __inject__(ActionPlanController.class).readBySystemIdentifier(Faces.getRequestParameter("actionplan"));
 		
-		imputationsDataTable = DataTable.build(DataTable.FIELD_LAZY,Boolean.TRUE,DataTable.ConfiguratorImpl.FIELD_ENTIY_CLASS,Imputation.class);
+		imputationsDataTable = DataTable.build(DataTable.FIELD_LAZY,Boolean.TRUE,DataTable.FIELD_ELEMENT_CLASS,Imputation.class);
 		
 		((LazyDataModel<?>)imputationsDataTable.getValue()).setListener(new LazyDataModel.Listener.AbstractImpl() {
 			@Override
@@ -46,7 +44,7 @@ public class ActionPlanFinancialProgramPage extends AbstractPageContainerManaged
 				//filter.addField(Imputation.FIELD_ACTION_PLAN, actionPlan.getCode());
 			}
 		});
-		
+		/*
 		imputationsDataTable.addHeaderToolbarLeftCommands(
 				CommandButton.build(CommandButton.FIELD_VALUE,"Ajouter",CommandButton.ConfiguratorImpl.FIELD_COLLECTION,imputationsDataTable
 						,CommandButton.FIELD_LISTENER,new AbstractCollection.AbstractActionListenerImpl(imputationsDataTable) {
@@ -57,13 +55,13 @@ public class ActionPlanFinancialProgramPage extends AbstractPageContainerManaged
 					}
 				},CommandButton.ConfiguratorImpl.FIELD_COLLECTION_UPDATABLE,Boolean.FALSE)
 			);
-		
+		*/
 		imputationsDataTable.addColumnsAfterRowIndex(
 				Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_ACTIVITY)
-				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_YEAR1_PAYMENT_CREDIT,Column.FIELD_HEADER,(actionPlan.getYear()+0)+"",Column.FIELD_WIDTH,"150")
-				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_YEAR2_PAYMENT_CREDIT,Column.FIELD_HEADER,(actionPlan.getYear()+1)+"",Column.FIELD_WIDTH,"150")
-				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_YEAR3_PAYMENT_CREDIT,Column.FIELD_HEADER,(actionPlan.getYear()+2)+"",Column.FIELD_WIDTH,"150")
-				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_TOTAL_PAYMENT_CREDIT,Column.FIELD_HEADER,"Total",Column.FIELD_WIDTH,"200")
+				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_YEAR1_PAYMENT_CREDIT,Column.FIELD_HEADER_TEXT,(actionPlan.getYear()+0)+"",Column.FIELD_WIDTH,"150")
+				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_YEAR2_PAYMENT_CREDIT,Column.FIELD_HEADER_TEXT,(actionPlan.getYear()+1)+"",Column.FIELD_WIDTH,"150")
+				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_YEAR3_PAYMENT_CREDIT,Column.FIELD_HEADER_TEXT,(actionPlan.getYear()+2)+"",Column.FIELD_WIDTH,"150")
+				,Column.build(Column.FIELD_FIELD_NAME,ActionPlanActivity.FIELD_AMOUNT_TOTAL_PAYMENT_CREDIT,Column.FIELD_HEADER_TEXT,"Total",Column.FIELD_WIDTH,"200")
 				);
 		
 		layout = Layout.build(Layout.FIELD_CELL_WIDTH_UNIT,Cell.WidthUnit.UI_G

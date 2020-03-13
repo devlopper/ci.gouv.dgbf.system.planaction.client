@@ -42,6 +42,12 @@
 			<redirect />
 		</navigation-case>
 		
+		<navigation-case>
+			<from-outcome>actionPlanActivityFinanceView</from-outcome>
+			<to-view-id>/private/actionplan/activity/finance.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
 		<!-- imputation -->
 		
 		<navigation-case>
@@ -68,7 +74,17 @@
 			<redirect />
 		</navigation-case>
 		
+		<navigation-case>
+			<from-outcome>imputationDistributeView</from-outcome>
+			<to-view-id>/private/imputation/distribute.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 		
+		<navigation-case>
+			<from-outcome>imputationPlanView</from-outcome>
+			<to-view-id>/private/imputation/plan.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 		
 		<!-- 
 		

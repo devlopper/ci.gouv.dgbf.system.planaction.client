@@ -28,7 +28,7 @@ public class ImputationListPage extends AbstractPageContainerManagedImpl impleme
 	@Override
 	protected void __listenPostConstruct__() {
 		super.__listenPostConstruct__();
-		dataTable = DataTable.build(DataTable.ConfiguratorImpl.FIELD_ENTIY_CLASS,Imputation.class,DataTable.FIELD_LAZY,Boolean.TRUE);
+		dataTable = DataTable.build(DataTable.FIELD_ELEMENT_CLASS,Imputation.class,DataTable.FIELD_LAZY,Boolean.TRUE);
 		
 		dataTable.addHeaderToolbarLeftCommands(Button.build(Map.of(Button.FIELD_VALUE,"Créer",Button.FIELD_OUTCOME,"imputationCreateView")));
 		
@@ -38,7 +38,7 @@ public class ImputationListPage extends AbstractPageContainerManagedImpl impleme
 				,Column.build(Map.of(Column.FIELD_FIELD_NAME,Imputation.FIELD_COST_UNIT))
 				);
 		
-		dataTable.addRecordMenuItemByArguments(MenuItem.FIELD_VALUE,"Supprimer",MenuItem.FIELD_ICON,"fa fa-remove",MenuItem.FIELD_LISTENER,new AbstractAction.Listener() {			
+		dataTable.addRecordMenuItemByArguments(MenuItem.FIELD_VALUE,"Supprimer",MenuItem.FIELD_ICON,"fa fa-remove",MenuItem.FIELD_LISTENER,new AbstractAction.Listener.AbstractImpl() {			
 			@Override public void listenAction(Object argument) {__inject__(ImputationController.class).delete((Imputation) argument);}
 		},MenuItem.ConfiguratorImpl.FIELD_CONFIRMABLE,Boolean.TRUE
 						,MenuItem.ConfiguratorImpl.FIELD_RUNNER_ARGUMENTS_SUCCESS_MESSAGE_ARGUMENTS_RENDER_TYPES,CollectionHelper.listOf(RenderType.GROWL));

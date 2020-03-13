@@ -12,24 +12,9 @@
     	<ui:define name="centerCenter">
     		<ui:decorate template="/layout/default.xhtml">
     			<ui:param name="layout" value="#{actionPlanReadPage.layout}"/>
-    			<ui:define name="cell1">
+    			<ui:define name="cell0">
     				<ui:decorate template="/collection/datatable/default.xhtml">
-		    			<ui:param name="dataTable" value="#{actionPlanReadPage.imputationsDataTable}"/>
-		    			<ui:define name="columnsAfterRowIndexBodies2">
-		    				<ui:include src="__outputOrInputAmount__.xhtml">
-		    					<ui:param name="yearIndex" value="0"/>
-		    				</ui:include>
-		    			</ui:define>
-		    			<ui:define name="columnsAfterRowIndexBodies3">
-		    				<ui:include src="__outputOrInputAmount__.xhtml">
-		    					<ui:param name="yearIndex" value="1"/>
-		    				</ui:include>
-		    			</ui:define>
-		    			<ui:define name="columnsAfterRowIndexBodies4">
-		    				<ui:include src="__outputOrInputAmount__.xhtml">
-		    					<ui:param name="yearIndex" value="2"/>
-		    				</ui:include>
-		    			</ui:define>
+		    			<ui:param name="dataTable" value="#{actionPlanReadPage.activitiesDataTable}"/>
 		    		</ui:decorate>	   
     			</ui:define>
     		</ui:decorate>
