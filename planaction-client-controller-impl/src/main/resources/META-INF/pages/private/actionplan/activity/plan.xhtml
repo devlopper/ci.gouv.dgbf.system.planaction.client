@@ -13,8 +13,41 @@
     		<ui:decorate template="/layout/default.xhtml">
     			<ui:param name="layout" value="#{actionPlanActivityPlanPage.layout}"/>
     			<ui:define name="cell0">
-    				<ui:decorate template="/collection/datatable/default.xhtml">
+    				<ui:decorate template="/collection/datatable/editable.xhtml">
 		    			<ui:param name="dataTable" value="#{actionPlanActivityPlanPage.imputationsDataTable}"/>
+		    			<ui:param name="amountFieldName" value="entryAuthorization"/>
+		    			<ui:define name="columnsAfterRowIndexCellEditorOutput1">
+		    				<ui:include src="__outputAmount__.xhtml">
+		    					<ui:param name="yearIndex" value="0"/>
+		    				</ui:include>
+		    			</ui:define>
+		    			<ui:define name="columnsAfterRowIndexCellEditorOutput2">
+		    				<ui:include src="__outputAmount__.xhtml">
+		    					<ui:param name="yearIndex" value="1"/>
+		    				</ui:include>
+		    			</ui:define>
+		    			<ui:define name="columnsAfterRowIndexCellEditorOutput3">
+		    				<ui:include src="__outputAmount__.xhtml">
+		    					<ui:param name="yearIndex" value="2"/>
+		    				</ui:include>
+		    			</ui:define>
+		    			
+		    			<ui:define name="columnsAfterRowIndexCellEditorInput1">
+			    			<ui:include src="__inputAmount__.xhtml">
+		    					<ui:param name="yearIndex" value="0"/>
+		    				</ui:include>
+		    			</ui:define>  
+		    			<ui:define name="columnsAfterRowIndexCellEditorInput2">    				
+			    			<ui:include src="__inputAmount__.xhtml">
+		    					<ui:param name="yearIndex" value="1"/>
+		    				</ui:include>			                
+		    			</ui:define>    	
+		    			<ui:define name="columnsAfterRowIndexCellEditorInput3">    				
+			    			<ui:include src="__inputAmount__.xhtml">
+		    					<ui:param name="yearIndex" value="2"/>
+		    				</ui:include>
+		    			</ui:define>   
+		    			<!--
 		    			<ui:param name="amountFieldName" value="entryAuthorization"/>
 		    			<ui:define name="columnsAfterRowIndexBodies1">
 		    				<ui:include src="__outputOrInputAmount__.xhtml">
@@ -31,9 +64,17 @@
 		    					<ui:param name="yearIndex" value="2"/>
 		    				</ui:include>
 		    			</ui:define>
+		    			-->
 		    		</ui:decorate>	   
     			</ui:define>   			
-    		</ui:decorate>	   
+    		</ui:decorate>
+    		<style>
+    			span.inputAmount .ui-inputfield {
+    				background: yellow !important;
+    				font-weight: bold !important;
+    				color: black !important;
+    			}
+    		</style>
     	</ui:define>
     </cyk:page>
 </html>

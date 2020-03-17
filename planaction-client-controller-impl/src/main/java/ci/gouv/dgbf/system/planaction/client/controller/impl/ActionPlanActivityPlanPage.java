@@ -10,18 +10,22 @@ import javax.inject.Named;
 
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.map.MapHelper;
-import org.cyk.utility.__kernel__.number.NumberHelper;
 import org.cyk.utility.__kernel__.persistence.query.filter.FilterDto;
 import org.cyk.utility.__kernel__.properties.Properties;
 import org.cyk.utility.__kernel__.string.StringHelper;
+import org.cyk.utility.__kernel__.throwable.RuntimeException;
+import org.cyk.utility.__kernel__.user.interface_.message.MessageRenderer;
+import org.cyk.utility.__kernel__.user.interface_.message.RenderType;
 import org.cyk.utility.client.controller.web.WebController;
+import org.cyk.utility.client.controller.web.jsf.primefaces.model.AbstractAction;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.ajax.Ajax;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.Column;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.DataTable;
-import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.LazyDataModel;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.command.CommandButton;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.layout.Cell;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.layout.Layout;
+import org.primefaces.component.api.DynamicColumn;
+import org.primefaces.event.CellEditEvent;
 
 import ci.gouv.dgbf.system.planaction.client.controller.api.FundingController;
 import ci.gouv.dgbf.system.planaction.client.controller.api.ImputationController;
@@ -70,12 +74,21 @@ public class ActionPlanActivityPlanPage extends AbstractPageContainerManagedImpl
 			@Override
 			protected Object __executeFunction__(Object argument) {
 				AjaxBehaviorEvent event = (AjaxBehaviorEvent) argument;
+				Funding funding = (Funding) event.getComponent().getAttributes().get("funding");
+				funding.setEntryAuthorization(amount);
+				System.out.println(
+						"ActionPlanActivityPlanPage.__listenPostConstruct__().new AbstractImpl() {...}.__executeFunction__() : "+funding);
+				__inject__(FundingController.class).update(funding,new Properties().setFields(Funding.FIELD_ENTRY_AUTHORIZATION));
+				MessageRenderer.getInstance().render(funding.getIdentifier()+" : "+funding.getEntryAuthorization()+" has been updated with amount "+amount, RenderType.GROWL);
+				return null;
+				/*
 				Imputation imputation = (Imputation) event.getComponent().getAttributes().get("imputation");
 				Integer yearIndex = NumberHelper.getInteger(event.getComponent().getAttributes().get("yearIndex"));
 				String amountFieldName = (String) event.getComponent().getAttributes().get("amountFieldName");
 				return amountFieldName+" of "+imputation+" of year "+yearIndex+" has been updated with amount "+amount;
+				*/
 			}
-		});
+		}.setAction(Ajax.Listener.Action.EXECUTE_FUNCTION));
 		amountEditAjax.getRunnerArguments().setSuccessMessageArguments(null);
 		amountEditAjax.setDisabled(Boolean.FALSE);
 	}
@@ -99,7 +112,29 @@ public class ActionPlanActivityPlanPage extends AbstractPageContainerManagedImpl
 		}
 		
 		imputationsDataTable = DataTable.build(DataTable.FIELD_VALUE,imputations,DataTable.FIELD_ELEMENT_CLASS,Imputation.class,DataTable.FIELD___PARENT_ELEMENT__
-				,actionPlanActivity);
+				,actionPlanActivity,DataTable.FIELD_EDITABLE,Boolean.TRUE,DataTable.FIELD_EDIT_MODE,"cell");
+		/*
+		imputationsDataTable.setLazy(Boolean.FALSE);
+		imputationsDataTable.setValue(imputations);
+		imputationsDataTable.setEditable(Boolean.TRUE);
+		imputationsDataTable.setEditMode("cell");
+		*/
+		imputationsDataTable.getAjaxes().get("cellEdit").setDisabled(Boolean.FALSE);
+		imputationsDataTable.getAjaxes().get("cellEdit").setListener(new AbstractAction.Listener.AbstractImpl() {
+			protected Object __executeFunction__(Object argument) {
+				CellEditEvent event = (CellEditEvent) argument;
+				DynamicColumn dynamicColumn = (DynamicColumn) event.getColumn();
+				Imputation imputation = (Imputation) imputationsDataTable.getValueAt(event.getRowIndex());
+				if(imputation == null)
+					throw new RuntimeException("imputation is required");
+				Funding funding = imputation.getFundingAt(dynamicColumn.getIndex()-1);
+				if(funding == null)
+					throw new RuntimeException("funding is required");
+				__inject__(FundingController.class).update(funding,new Properties().setFields(Funding.FIELD_ENTRY_AUTHORIZATION));
+				return null;
+			}
+		}.setAction(AbstractAction.Listener.Action.EXECUTE_FUNCTION));
+		
 		imputationsDataTable.addHeaderToolbarLeftCommandsByArgumentsOpenViewInDialogCreate(CommandButton.FIELD_VALUE,"Ajouter",CommandButton.FIELD_ICON,"fa fa-plus");	
 		
 		String amountColumnWidth = "130";

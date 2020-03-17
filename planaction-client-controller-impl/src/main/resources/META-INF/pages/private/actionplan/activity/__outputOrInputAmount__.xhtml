@@ -8,13 +8,11 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
-	
-	<p:inplace>
+	<!--
+	<p:inplace editor="true">
 		<f:facet name="output">
-			<h:outputText value="#{record.getFundingAt(yearIndex).amount[amountFieldName]}">
-				<!--
+			<h:outputText value="#{record.getFundingAt(yearIndex)[amountFieldName]}">
 				<f:convertNumber type="number" integerOnly="true"/>
-				-->
 			</h:outputText>
 		</f:facet>
 		<f:facet name="input">
@@ -22,11 +20,11 @@
 				<ui:decorate template="/ajax/default.xhtml">
 					<ui:param name="ajax" value="#{__page__.amountEditAjax}"/>
 				</ui:decorate>
-				<f:attribute name="imputation" value="#{record}" />
-				<f:attribute name="yearIndex" value="#{yearIndex}" />
-				<f:attribute name="amountFieldName" value="#{amountFieldName}" />
+				<f:attribute name="funding" value="#{record.getFundingAt(yearIndex)}" />
 			</p:inputNumber>
 		</f:facet>
 	</p:inplace>			
+	-->
 	
+	<p:inputNumber value="#{funding[amountFieldName]}" decimalPlaces="0"/>
 </ui:composition>

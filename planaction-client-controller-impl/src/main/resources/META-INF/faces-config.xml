@@ -8,7 +8,7 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		
-		<!-- action plan -->
+		<!-- Action Plan  -->
 		
 		<navigation-case>
 			<from-outcome>actionPlanListView</from-outcome>
@@ -27,8 +27,6 @@
 			<to-view-id>/private/actionplan/read.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-		
-		<!-- action plan and activity -->
 		
 		<navigation-case>
 			<from-outcome>actionPlanActivityCreateView</from-outcome>
@@ -53,8 +51,6 @@
 			<to-view-id>/private/actionplan/activity/finance.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-		
-		<!-- imputation -->
 		
 		<navigation-case>
 			<from-outcome>imputationListView</from-outcome>
@@ -92,21 +88,45 @@
 			<redirect />
 		</navigation-case>
 		
-		<!-- 
+		<!-- Entry Authorization Plan -->
 		
 		<navigation-case>
-			<from-outcome>actionPlanFinancialProgramView</from-outcome>
-			<to-view-id>/private/actionplan/financialprogram.jsf</to-view-id>
+			<from-outcome>entryAuthorizationListView</from-outcome>
+			<to-view-id>/private/entryauthorization/list.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<!--
+		<navigation-case>
+			<from-outcome>entryAuthorizationCreateView</from-outcome>
+			<to-view-id>/private/entryauthorization/create.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		-->
+		
+		<navigation-case>
+			<from-outcome>entryAuthorizationEditView</from-outcome>
+			<to-view-id>/private/entryauthorization/edit.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>actionPlanEntryAuthorizationPlanView</from-outcome>
-			<to-view-id>/private/actionplan/entryauthorizationplan.jsf</to-view-id>
+			<from-outcome>paymentCreditListView</from-outcome>
+			<to-view-id>/private/paymentcredit/list.jsf</to-view-id>
 			<redirect />
 		</navigation-case>
-		
-		 -->
+		<!--
+		<navigation-case>
+			<from-outcome>paymentCreditCreateView</from-outcome>
+			<to-view-id>/private/paymentcredit/create.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		-->
+		<navigation-case>
+			<from-outcome>paymentCreditEditView</from-outcome>
+			<to-view-id>/private/paymentcredit/edit.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
 		
 	</navigation-rule>
 

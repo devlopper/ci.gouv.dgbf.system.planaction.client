@@ -8,10 +8,10 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter @Setter @NoArgsConstructor @Accessors(chain=true)
-public class FundingAllocation extends AbstractFunding implements Serializable {
+public class PaymentCredit extends AbstractAmountPlanning implements Serializable {
 	private static final long serialVersionUID = 1L;
+
+	private EntryAuthorization entryAuthorization;
 	
-	private FundingSource fundingSource;
-	private Lessor lessor;
-	
+	public static final String FIELD_ENTRY_AUTHORIZATION = "entryAuthorization";
 }
