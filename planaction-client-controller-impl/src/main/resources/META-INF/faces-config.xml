@@ -41,6 +41,12 @@
 		</navigation-case>
 		
 		<navigation-case>
+			<from-outcome>actionPlanActivityReadView</from-outcome>
+			<to-view-id>/private/actionplan/activity/read.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
 			<from-outcome>actionPlanActivityPlanView</from-outcome>
 			<to-view-id>/private/actionplan/activity/plan.jsf</to-view-id>
 			<redirect />

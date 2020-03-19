@@ -8,13 +8,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:cyk="http://primefaces.jsf.web.utility.cyk.org">
 	
-    <cyk:page value="#{actionPlanReadPage}">
+    <cyk:page value="#{actionPlanActivityReadPage}">
     	<ui:define name="centerCenter">
     		<ui:decorate template="/layout/default.xhtml">
-    			<ui:param name="layout" value="#{actionPlanReadPage.layout}"/>
+    			<ui:param name="layout" value="#{actionPlanActivityReadPage.layout}"/>
     			<ui:define name="cell0">
     				<ui:decorate template="/collection/datatable/default.xhtml">
-		    			<ui:param name="dataTable" value="#{actionPlanReadPage.actionPlanActivitiesDataTable}"/>
+		    			<ui:param name="dataTable" value="#{actionPlanActivityReadPage.imputationsDataTable}"/>
 		    		</ui:decorate>	   
     			</ui:define>
     		</ui:decorate>
