@@ -15,6 +15,33 @@
     			<ui:define name="cell0">
     				<ui:decorate template="/collection/datatable/default.xhtml">
 		    			<ui:param name="dataTable" value="#{actionPlanReadPage.actionPlanActivitiesDataTable}"/>
+		    			<ui:define name="headerColumnsGroups">
+			    			<p:columnGroup type="header">
+								<p:row>
+									<p:column headerText="#" rowspan="2" width="30"/>
+									<p:column headerText="Activité" rowspan="2" width="30%"/>
+									<p:column headerText="2020" colspan="2"/>
+									<p:column headerText="2021" colspan="2"/>
+									<p:column headerText="2022" colspan="2"/>
+									<p:column headerText="A.E." rowspan="2"/>
+									<p:column headerText="C.P." rowspan="2"/>
+									<p:column headerText="" rowspan="2" width="40"/>
+						       	</p:row>
+						       	<p:row>
+						       		<!-- 2020 -->
+						       		<p:column headerText="A.E."/>
+									<p:column headerText="C.P."/>
+									
+									<!-- 2021 -->
+									<p:column headerText="A.E."/>
+									<p:column headerText="C.P."/>
+									
+									<!-- 2022 -->
+									<p:column headerText="A.E."/>
+									<p:column headerText="C.P."/>
+						       	</p:row>
+							</p:columnGroup>
+		    			</ui:define>
 		    		</ui:decorate>	   
     			</ui:define>
     		</ui:decorate>
