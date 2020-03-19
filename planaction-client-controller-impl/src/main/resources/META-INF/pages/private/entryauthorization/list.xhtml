@@ -10,9 +10,44 @@
 	
     <cyk:page value="#{entryAuthorizationListPage}">
     	<ui:define name="centerCenter">
+    		<ui:fragment rendered="#{entryAuthorizationListPage.imputation != null}">
+    			<p:panelGrid columns="2" layout="grid">
+    				<h:panelGroup>
+    					<h:outputText value="Montant en financement des autorisations d'engagements : "/>
+	    				<h:outputText value="#{entryAuthorizationListPage.imputation.fundingEntryAuthorizationsCumulation}">
+	    					<f:convertNumber type="number" groupingUsed="true" />
+	    				</h:outputText>
+    				</h:panelGroup>
+    				<h:panelGroup>
+    					<h:outputText value="Cumul des montants des autorisations d'engagements : "/>
+    					<h:outputText value="#{entryAuthorizationListPage.imputation.entryAuthorizationsAmountsCumulation}">
+    						<f:convertNumber type="number" groupingUsed="true" />
+    					</h:outputText>
+    				</h:panelGroup> 				
+    			</p:panelGrid>
+    		</ui:fragment>
+    		
+    		<ui:decorate template="#{primefacesHelper.getModelTemplate(entryAuthorizationListPage.dataTable)}">
+    			<ui:param name="dataTable" value="#{entryAuthorizationListPage.dataTable}"/>  			
+    			<ui:define name="columnsAfterRowIndexCellEditorInput0">    				
+	    			<p:inputNumber value="#{record.year}" decimalPlaces="0"/>
+    			</ui:define>
+    			
+    			<ui:define name="columnsAfterRowIndexCellEditorOutput1">    				
+	    			<h:outputText value="#{record.amount}">
+	    				<f:convertNumber type="number" />
+	    			</h:outputText>
+    			</ui:define>
+    			<ui:define name="columnsAfterRowIndexCellEditorInput1">    				
+	    			<p:inputNumber value="#{record.amount}" decimalPlaces="0" inputStyleClass="cyk-text-align-right"/>						                
+    			</ui:define>
+    		</ui:decorate>
+    		
+    		<!--
     		<ui:decorate template="/collection/datatable/default.xhtml">
-    			<ui:param name="dataTable" value="#{entryAuthorizationListPage.dataTable}"/>
-    		</ui:decorate>	   
+    			<ui:param name="dataTable" value="#{entryAuthorizationListPage.paymentCreditsDataTable}"/>
+    		</ui:decorate>
+    		-->	   
     	</ui:define>
     </cyk:page>
 </html>

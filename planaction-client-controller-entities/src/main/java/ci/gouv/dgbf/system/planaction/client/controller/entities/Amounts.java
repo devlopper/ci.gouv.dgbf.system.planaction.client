@@ -9,10 +9,10 @@ import lombok.experimental.Accessors;
 @Getter @Setter @Accessors(chain=true)
 public class Amounts implements Serializable {
 
-	private Amount year1;
-	private Amount year2;
-	private Amount year3;
-	private Amount total;
+	private Amount year1 = new Amount();
+	private Amount year2 = new Amount();
+	private Amount year3 = new Amount();
+	private Amount total = new Amount();
 	
 	public static final String FIELD_YEAR_1 = "year1";
 	public static final String FIELD_YEAR_2 = "year2";

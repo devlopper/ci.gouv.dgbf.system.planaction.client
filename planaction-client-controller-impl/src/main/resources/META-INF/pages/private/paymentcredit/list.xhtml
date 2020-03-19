@@ -10,9 +10,46 @@
 	
     <cyk:page value="#{paymentCreditListPage}">
     	<ui:define name="centerCenter">
-    		<ui:decorate template="/collection/datatable/default.xhtml">
-    			<ui:param name="dataTable" value="#{paymentCreditListPage.dataTable}"/>
-    		</ui:decorate>	   
+    		<ui:fragment rendered="#{paymentCreditListPage.entryAuthorization != null}">
+    			<p:panelGrid columns="2" layout="grid">
+    				<h:panelGroup>
+    					<h:outputText value="Montant : "/>
+	    				<h:outputText value="#{paymentCreditListPage.entryAuthorization.amount}">
+	    					<f:convertNumber type="number" groupingUsed="true" />
+	    				</h:outputText>
+    				</h:panelGroup>
+    				<h:panelGroup>
+    					<h:outputText value="Cumul des montants des échéances : "/>
+    					<h:outputText value="#{paymentCreditListPage.entryAuthorization.paymentCreditsAmountsCumulation}">
+    						<f:convertNumber type="number" groupingUsed="true" />
+    					</h:outputText>
+    				</h:panelGroup> 				
+    			</p:panelGrid>
+    		</ui:fragment>
+    		
+    		<ui:decorate template="#{paymentCreditListPage.dataTable.editable ? '/collection/datatable/editable.xhtml' : '/collection/datatable/default.xhtml'}">
+    			<ui:param name="dataTable" value="#{paymentCreditListPage.dataTable}"/>  			
+    			<ui:define name="columnsAfterRowIndexCellEditorInput0">    				
+	    			<p:inputNumber value="#{record.year}" decimalPlaces="0"  styleClass="cyk-text-align-right"/>
+    			</ui:define>
+    			
+    			<ui:define name="columnsAfterRowIndexCellEditorOutput1">    				
+	    			<h:outputText value="#{record.amount}">
+	    				<f:convertNumber type="number" />
+	    			</h:outputText>
+    			</ui:define>
+    			<ui:define name="columnsAfterRowIndexCellEditorInput1">    				
+	    			<p:inputNumber value="#{record.amount}" decimalPlaces="0" styleClass="cyk-text-align-right"/>						                
+    			</ui:define>
+    		</ui:decorate>
+    		<style>
+    			span.edit input{
+    				color: black;
+    				font-weight: bold;
+    				text-align:right;
+    			}
+    			
+    		</style>	
     	</ui:define>
     </cyk:page>
 </html>

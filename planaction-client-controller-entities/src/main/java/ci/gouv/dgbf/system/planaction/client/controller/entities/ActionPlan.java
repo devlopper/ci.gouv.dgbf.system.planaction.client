@@ -22,7 +22,7 @@ public class ActionPlan extends AbstractDataIdentifiableSystemStringIdentifiable
 
 	@Override
 	public String toString() {
-		return getCode()+" "+getName();
+		return getName();
 	}
 	
 	public static final String FIELD_PRODUCER = "producer";

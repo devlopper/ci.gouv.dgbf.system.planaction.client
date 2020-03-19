@@ -24,6 +24,7 @@ import org.cyk.utility.client.controller.web.jsf.primefaces.model.collection.Dat
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.command.CommandButton;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.layout.Cell;
 import org.cyk.utility.client.controller.web.jsf.primefaces.model.layout.Layout;
+import org.cyk.utility.client.controller.web.jsf.primefaces.model.menu.MenuItem;
 import org.primefaces.component.api.DynamicColumn;
 import org.primefaces.event.CellEditEvent;
 
@@ -60,9 +61,9 @@ public class ActionPlanActivityPlanPage extends AbstractPageContainerManagedImpl
 		amountsFieldsNames = new String[numberOfYears+1];
 		for(Integer index = 0; index < numberOfYears; index = index + 1) {
 			years[index] = StringHelper.get(actionPlanActivity.getActionPlan().getYear()+index);
-			amountsFieldsNames[index] = String.format("amountYear%sPaymentCredit",index+1);
+			amountsFieldsNames[index] = String.format("amounts.year%s.paymentCredit",index+1);
 		}
-		amountsFieldsNames[numberOfYears] = "amountTotalPaymentCredit";
+		amountsFieldsNames[numberOfYears] = "amounts.total.paymentCredit";
 		__buildImputationsDataTable__();
 		
 		layout = Layout.build(Layout.FIELD_CELL_WIDTH_UNIT,Cell.WidthUnit.UI_G
@@ -146,7 +147,8 @@ public class ActionPlanActivityPlanPage extends AbstractPageContainerManagedImpl
 				,Column.build(Column.FIELD_FIELD_NAME,amountsFieldsNames[3],Column.FIELD_HEADER_TEXT,"Total",Column.FIELD_WIDTH,amountColumnWidth,Column.FIELD_FOOTER_TEXT,"TOTAL")
 				);
 		
-		//imputationsDataTable.addRecordMenuItemByArgumentsOpenViewInDialog("imputationDistributeView",MenuItem.FIELD_VALUE,"Répartir",MenuItem.FIELD_ICON,"fa fa-paint-brush");
+		imputationsDataTable.addRecordMenuItemByArgumentsOpenViewInDialog("entryAuthorizationListView",MenuItem.FIELD_VALUE,"A.E.",MenuItem.FIELD_ICON,"fa fa-paint-brush",
+				MenuItem.FIELD___ACTION_ARGUMENT_IDENTIFIER_PARAMETER_NAME__,"imputation");
 		//imputationsDataTable.addRecordMenuItemByArgumentsOpenViewInDialog("imputationPlanView",MenuItem.FIELD_VALUE,"Planifier A.E.",MenuItem.FIELD_ICON,"fa fa-envelope");
 		imputationsDataTable.addRecordMenuItemByArgumentsExecuteFunctionDelete();
 	}

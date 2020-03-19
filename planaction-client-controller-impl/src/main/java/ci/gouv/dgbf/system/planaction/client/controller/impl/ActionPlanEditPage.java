@@ -3,6 +3,8 @@ package ci.gouv.dgbf.system.planaction.client.controller.impl;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -23,13 +25,16 @@ public class ActionPlanEditPage extends AbstractEntityEditPageContainerManagedIm
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected Collection<String> __getFormArgumentsFieldInputsFieldsNames__(Class<?> klass) {
+	protected Collection<String> __getFormArgumentsFieldInputsFieldsNames__() {
 		return CollectionHelper.listOf(ActionPlan.FIELD_PRODUCER,ActionPlan.FIELD_YEAR);
 	}
 	
 	@Override
-	protected Object[] __getFormArguments__() {
-		return ArrayUtils.addAll(super.__getFormArguments__(),new Object[] {Form.FIELD_LISTENER,new Form.Listener.AbstractImpl() {
+	protected Map<Object,Object> __getFormArguments__() {
+		Map<Object,Object> arguments = super.__getFormArguments__();
+		if(arguments == null)
+			arguments = new HashMap<>();
+		arguments.put(Form.FIELD_LISTENER, new Form.Listener.AbstractImpl() {
 			@Override
 			public Object[] getInputArguments(Form form, String fieldName, Field field, Input annotation,Class<?> fieldType) {
 				if(ActionPlan.FIELD_PRODUCER.equals(fieldName))
@@ -39,6 +44,7 @@ public class ActionPlanEditPage extends AbstractEntityEditPageContainerManagedIm
 					return super.getInputArguments(form, fieldName, field, annotation, fieldType);
 				return null;
 			}
-		}});
+		});
+		return arguments;
 	}
 }

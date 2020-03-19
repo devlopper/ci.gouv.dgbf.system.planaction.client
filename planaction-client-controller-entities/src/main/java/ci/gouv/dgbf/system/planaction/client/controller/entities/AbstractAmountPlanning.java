@@ -13,13 +13,18 @@ public abstract class AbstractAmountPlanning extends AbstractDataIdentifiableSys
 	private static final long serialVersionUID = 1L;
 	
 	@Input protected Short year;
-	@Input protected Integer amount;
+	@Input protected Long amount;
 	
 	protected Producer producer;
 	protected ActionPlan actionPlan;
 	protected Activity activity;
 	protected ActionPlanActivity actionPlanActivity;
 	protected CostUnit costUnit;
+	
+	@Override
+	public String toString() {
+		return getYear()+":"+getAmount();
+	}
 	
 	/**/
 	

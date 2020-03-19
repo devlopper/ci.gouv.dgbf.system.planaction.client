@@ -19,6 +19,9 @@ public class Imputation extends AbstractAmounts implements Serializable {
 	private CostUnit costUnit;
 	private List<Funding> fundings;
 	
+	private Long fundingEntryAuthorizationsCumulation;
+	private Long entryAuthorizationsAmountsCumulation;
+	
 	public Funding getFundingAt(Integer index) {
 		return CollectionHelper.getElementAt(fundings, index);
 	}

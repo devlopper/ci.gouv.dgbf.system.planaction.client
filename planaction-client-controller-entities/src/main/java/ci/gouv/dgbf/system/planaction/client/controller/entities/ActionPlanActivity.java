@@ -14,6 +14,11 @@ public class ActionPlanActivity extends AbstractAmounts implements Serializable 
 	private ActionPlan actionPlan;
 	private Activity activity;
 	
+	@Override
+	public String toString() {
+		return activity+" du "+actionPlan;
+	}
+	
 	/**/
 	
 	public static final String FIELD_ACTION_PLAN = "actionPlan";

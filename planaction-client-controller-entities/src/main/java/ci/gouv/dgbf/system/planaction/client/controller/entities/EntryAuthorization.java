@@ -11,7 +11,8 @@ import lombok.experimental.Accessors;
 public class EntryAuthorization extends AbstractAmountPlanning implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	protected Imputation imputation;
+	private Imputation imputation;
+	private Long paymentCreditsAmountsCumulation;
 	
 	@Override
 	public String toString() {

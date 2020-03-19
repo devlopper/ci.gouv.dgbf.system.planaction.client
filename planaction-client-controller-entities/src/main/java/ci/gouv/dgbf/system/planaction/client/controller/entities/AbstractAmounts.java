@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 public class AbstractAmounts extends AbstractDataIdentifiableSystemStringImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	protected Amounts amounts;
+	protected Amounts amounts = new Amounts();
 	
 	public Integer getAmountYear1EntryAuthorization() {
 		if(amounts == null || amounts.getYear1() == null)
