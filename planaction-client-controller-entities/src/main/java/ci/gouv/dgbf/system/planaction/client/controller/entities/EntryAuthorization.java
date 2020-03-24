@@ -1,6 +1,7 @@
 package ci.gouv.dgbf.system.planaction.client.controller.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ public class EntryAuthorization extends AbstractAmountPlanning implements Serial
 	private static final long serialVersionUID = 1L;
 	
 	private Imputation imputation;
+	private Collection<PaymentCredit> paymentCredits;
 	private Long paymentCreditsAmountsCumulation;
 	
 	@Override

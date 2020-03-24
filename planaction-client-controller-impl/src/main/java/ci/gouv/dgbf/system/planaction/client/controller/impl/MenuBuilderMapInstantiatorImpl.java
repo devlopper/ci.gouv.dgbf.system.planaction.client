@@ -13,16 +13,17 @@ public class MenuBuilderMapInstantiatorImpl extends org.cyk.utility.client.contr
 
 	@Override
 	protected void __instantiateSessionMenuBuilderItems__(Object key, MenuBuilder sessionMenuBuilder, Object request,Principal principal) {		
-		
 		sessionMenuBuilder.addItems(
 			__inject__(MenuItemBuilder.class).setCommandableName("Plan d'action").setCommandableIcon(Icon.BUILDING)
 			.addChild(__inject__(MenuItemBuilder.class).setCommandableName("Liste").setCommandableNavigationIdentifier("actionPlanListView").setCommandableIcon(Icon.LIST))
+			.addChild(__inject__(MenuItemBuilder.class).setCommandableName("Programmation financière").setCommandableNavigationIdentifier("imputationFinancialProgrammingView")
+					.setCommandableIcon(Icon.SUITCASE))
 			/*,__inject__(MenuItemBuilder.class).setCommandableName("Imputation").setCommandableIcon(Icon.LINK)
 			.addChild(__inject__(MenuItemBuilder.class).setCommandableName("Liste").setCommandableNavigationIdentifier("imputationListView").setCommandableIcon(Icon.LIST))
 			*/
 			
-			,__inject__(MenuItemBuilder.class).setCommandableName("Autorisation d'engagement").setCommandableIcon(Icon.FILE)
-			.addChild(__inject__(MenuItemBuilder.class).setCommandableName("Liste").setCommandableNavigationIdentifier("entryAuthorizationListView").setCommandableIcon(Icon.LIST))
+			//,__inject__(MenuItemBuilder.class).setCommandableName("Autorisation d'engagement").setCommandableIcon(Icon.FILE)
+			//.addChild(__inject__(MenuItemBuilder.class).setCommandableName("Liste").setCommandableNavigationIdentifier("entryAuthorizationListView").setCommandableIcon(Icon.LIST))
 		);
 	}
 	

@@ -83,6 +83,18 @@
 		</navigation-case>
 		
 		<navigation-case>
+			<from-outcome>imputationSelectView</from-outcome>
+			<to-view-id>/private/imputation/select.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>imputationFinancialProgrammingView</from-outcome>
+			<to-view-id>/private/imputation/financialprogramming.jsf</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
 			<from-outcome>imputationDistributeView</from-outcome>
 			<to-view-id>/private/imputation/distribute.jsf</to-view-id>
 			<redirect />

@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.cyk.utility.__kernel__.collection.CollectionHelper;
 import org.cyk.utility.__kernel__.computation.ComparisonOperator;
 import org.cyk.utility.__kernel__.constant.ConstantEmpty;
 import org.cyk.utility.__kernel__.identifier.resource.ParameterName;
@@ -84,7 +85,7 @@ public class EntryAuthorizationListPage extends AbstractEntityListPageContainerM
 	
 	@Override
 	protected Collection<String> __getColumnsFieldsNames__(Class<EntryAuthorization> entityClass) {
-		List<String> list = List.of(EntryAuthorization.FIELD_YEAR,EntryAuthorization.FIELD_AMOUNT);
+		List<String> list = CollectionHelper.listOf(EntryAuthorization.FIELD_YEAR,EntryAuthorization.FIELD_AMOUNT);
 		if(imputation == null)
 			list.addAll(0, List.of(
 					EntryAuthorization.FIELD_IMPUTATION+"."+Imputation.FIELD_ACTION_PLAN+"."+ActionPlan.FIELD_NAME

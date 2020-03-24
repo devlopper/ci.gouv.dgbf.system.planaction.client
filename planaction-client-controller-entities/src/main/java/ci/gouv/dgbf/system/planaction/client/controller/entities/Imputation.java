@@ -1,6 +1,7 @@
 package ci.gouv.dgbf.system.planaction.client.controller.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import org.cyk.utility.__kernel__.collection.CollectionHelper;
@@ -17,6 +18,8 @@ public class Imputation extends AbstractAmounts implements Serializable {
 	private ActionPlan actionPlan;
 	private Activity activity;
 	private CostUnit costUnit;
+	private Collection<EntryAuthorization> entryAuthorizations;
+	
 	private List<Funding> fundings;
 	
 	private Long fundingEntryAuthorizationsCumulation;
@@ -38,6 +41,8 @@ public class Imputation extends AbstractAmounts implements Serializable {
 	public static final String FIELD_ACTION_PLAN = "actionPlan";
 	public static final String FIELD_ACTIVITY = "activity";
 	public static final String FIELD_COST_UNIT = "costUnit";
+	public static final String FIELD_ENTRY_AUTHORIZATIONS = "entryAuthorizations";
 	public static final String FIELD_FUNDINGS = "fundings";
 	public static final String FIELD_ACTION_PLAN_ACTIVITY = "actionPlanActivity";
+	
 }
